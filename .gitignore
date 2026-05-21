@@ -1,0 +1,46 @@
+# macOS / Linux system files
+.DS_Store
+Thumbs.db
+._*
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.~*
+
+# Temp / cache
+*.tmp
+*.log
+.cache/
+*.bak
+
+# Local environment / secrets
+.env
+.env.local
+
+# Ignore node_modules (if you ever add build tools)
+node_modules/
+
+# Large binary assets (optional – adjust if you do want to track them)
+*.psd
+*.ai
+*.mp4
+*.zip
+
+# Ignore specific download files that are generated locally
+/assets/downloads/*_local_*
+
+# Ignore backup copies of PDFs (if you create duplicates)
+*_backup.pdf
+*_old.pdf
+
+# Ignore GitHub Pages local config (if any)
+.jekyll-cache/
+_site/
