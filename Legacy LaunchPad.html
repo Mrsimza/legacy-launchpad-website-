@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Launchpad | Document Roadmaps & Compliance Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        .header {
+            background: #0f172a;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: #fbbf24;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #0f172a;
+        }
+        .logo-text h1 {
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+        .nav a:hover {
+            color: #fbbf24;
+        }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        .btn {
+            display: inline-block;
+            background: #fbbf24;
+            color: #0f172a;
+            padding: 12px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #0f172a;
+        }
+        /* Industry cards (for roadmap showcase) */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .industry-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .industry-card:hover {
+            transform: translateY(-5px);
+        }
+        .industry-header {
+            background: #0f172a;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .industry-body {
+            padding: 20px;
+        }
+        .industry-body ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        .industry-body li {
+            margin: 8px 0;
+            font-size: 0.9rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #0f172a;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        .doc-count {
+            font-size: 0.8rem;
+            color: #475569;
+            margin-top: 10px;
+        }
+        .btn-small {
+            display: inline-block;
+            background: #0f172a;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-top: 15px;
+            transition: 0.2s;
+        }
+        .btn-small:hover {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+        /* About section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        .doc-placeholder {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .doc-placeholder h4 {
+            margin-bottom: 10px;
+        }
+        .doc-placeholder ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .doc-placeholder li {
+            margin: 8px 0;
+        }
+        .doc-placeholder a {
+            color: #0f172a;
+            text-decoration: none;
+            border-bottom: 1px dashed #94a3b8;
+        }
+        /* Repository structure */
+        .repo-structure {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 30px;
+            border-radius: 16px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+        /* Contact form placeholder */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.85rem;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .header-flex { flex-direction: column; text-align: center; }
+            .nav a { margin: 0 10px; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container header-flex">
+        <div class="logo-area">
+            <div class="logo-placeholder">
+                <i class="fas fa-cube"></i>
+            </div>
+            <div class="logo-text">
+                <h1>Legacy Launchpad</h1>
+                <p>Building what lasts.</p>
+            </div>
+        </div>
+        <div class="nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#roadmaps">Roadmaps</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</div>
+
+<section id="home" class="hero">
+    <div class="container">
+        <h1>Document Roadmaps & Compliance Systems</h1>
+        <p>For 20+ industries. We provide ready‑to‑use file directory structures, policies, forms, and templates – so you can focus on running your business.</p>
+        <a href="#roadmaps" class="btn">Explore industry roadmaps ↓</a>
+    </div>
+</section>
+
+<!-- ABOUT US SECTION (like LICC bio) -->
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">About Legacy Launchpad</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Legacy Launchpad was founded by <strong>Msimelelo Victor Malusi</strong> – a compliance and documentation specialist who has built systems for NPOs, security companies, and small businesses from the ground up.</p>
+                <p>We believe that every entrepreneur deserves professional administrative support without paying lawyer or accountant rates. Our <strong>document roadmaps</strong> give you a complete file structure, policies, forms, and contracts – all tailored to your industry.</p>
+                <p>We are not lawyers or tax practitioners. We are your <strong>pillar of compliance</strong> – the cane that supports your business while you build your legacy.</p>
+                <div class="doc-placeholder">
+                    <h4>📄 Key Documents (placeholders – coming soon)</h4>
+                    <ul>
+                        <li>📘 <a href="#">Terms of Business</a> – standard engagement terms</li>
+                        <li>📘 <a href="#">Privacy Policy (POPIA)</a> – data protection</li>
+                        <li>📘 <a href="#">Service Agreement (Master)</a> – liability limited to fees paid</li>
+                        <li>📘 <a href="#">Complaints Policy</a> – how we handle disputes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-text">
+                <p><i class="fas fa-check-circle" style="color:#fbbf24;"></i> <strong>Professional indemnity insured</strong> (R1m cover)</p>
+                <p><i class="fas fa-check-circle" style="color:#fbbf24;"></i> <strong>Fixed fees</strong> – no hourly billing</p>
+                <p><i class="fas fa-check-circle" style="color:#fbbf24;"></i> <strong>POPIA compliant</strong> – your data is safe</p>
+                <p><i class="fas fa-check-circle" style="color:#fbbf24;"></i> <strong>Founder‑led</strong> – direct access, no call centres</p>
+                <p><i class="fas fa-check-circle" style="color:#fbbf24;"></i> <strong>20+ industry roadmaps</strong> – ready to deploy</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section id="services">
+    <div class="container">
+        <h2 class="section-title">What we deliver</h2>
+        <div class="industry-grid">
+            <div class="industry-card">
+                <div class="industry-header"><i class="fas fa-file-alt"></i> Document Roadmap</div>
+                <div class="industry-body">
+                    <p>Complete list of every document your business needs – by category (Registration, Contracts, HR, Ops, H&S, Finance, Assets).</p>
+                    <div class="badge">Core deliverable</div>
+                </div>
+            </div>
+            <div class="industry-card">
+                <div class="industry-header"><i class="fas fa-folder-tree"></i> File Directory</div>
+                <div class="industry-body">
+                    <p>Ready‑to‑use folder structure. Save time, never lose a document, and be audit‑ready from day one.</p>
+                    <div class="badge">Core deliverable</div>
+                </div>
+            </div>
+            <div class="industry-card">
+                <div class="industry-header"><i class="fas fa-file-contract"></i> Drafted Templates</div>
+                <div class="industry-body">
+                    <p>Customised policies, contracts, forms, and checklists – specific to your industry (e.g., SLA, OHS, incident reports).</p>
+                    <div class="badge">Core deliverable</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOCUMENT ROADMAP SHOWCASE (dedicated campaign section) -->
+<section id="roadmaps" style="background: #f1f5f9;">
+    <div class="container">
+        <h2 class="section-title">Document Roadmaps – Industry Examples</h2>
+        <p style="text-align: center; margin-bottom: 40px;">Each roadmap includes 70–85 core documents + full file directory. Below are five of our 20+ industries.</p>
+        
+        <div class="industry-grid">
+            <!-- 1. Construction -->
+            <div class="industry-card">
+                <div class="industry-header">🏗️ Construction</div>
+                <div class="industry-body">
+                    <p><strong>84 documents</strong> including:</p>
+                    <ul>
+                        <li>CIDB registration, NHBRC (residential)</li>
+                        <li>Construction agreement, variation orders</li>
+                        <li>Site diary, toolbox talks, risk assessments</li>
+                        <li>Plant & equipment logs, asbestos register</li>
+                    </ul>
+                    <div class="doc-count">📁 Full file directory: 08 folders</div>
+                    <a href="#" class="btn-small">View sample <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 2. Cleaning Services -->
+            <div class="industry-card">
+                <div class="industry-header">🧼 Cleaning Services</div>
+                <div class="industry-body">
+                    <p><strong>73 documents</strong> including:</p>
+                    <ul>
+                        <li>Waste carrier licence, chemical MSDS</li>
+                        <li>Daily cleaning checklists, site SLA</li>
+                        <li>PPE register, equipment maintenance</li>
+                        <li>Client sign‑off sheets, COIDA</li>
+                    </ul>
+                    <div class="doc-count">📁 Full file directory: 08 folders</div>
+                    <a href="#" class="btn-small">View sample <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 3. Cash for Scrap -->
+            <div class="industry-card">
+                <div class="industry-header">♻️ Cash for Scrap</div>
+                <div class="industry-body">
+                    <p><strong>77 documents</strong> including:</p>
+                    <ul>
+                        <li>Scrap metal & second‑hand goods licences</li>
+                        <li>Daily purchase register (legal requirement)</li>
+                        <li>Weighbridge tickets, seller ID verification</li>
+                        <li>Stock inventory by metal type</li>
+                    </ul>
+                    <div class="doc-count">📁 Full file directory: 08 folders</div>
+                    <a href="#" class="btn-small">View sample <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 4. Property / Real Estate -->
+            <div class="industry-card">
+                <div class="industry-header">🏢 Property & Real Estate</div>
+                <div class="industry-body">
+                    <p><strong>77 documents</strong> including:</p>
+                    <ul>
+                        <li>Property practitioner licence + FFC</li>
+                        <li>Lease agreements (residential & commercial)</li>
+                        <li>Trust account register, rent roll</li>
+                        <li>Property inspection reports (ingoing/outgoing)</li>
+                    </ul>
+                    <div class="doc-count">📁 Full file directory: 08 folders</div>
+                    <a href="#" class="btn-small">View sample <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 5. Transport & Logistics -->
+            <div class="industry-card">
+                <div class="industry-header">🚛 Transport & Logistics</div>
+                <div class="industry-body">
+                    <p><strong>84 documents</strong> including:</p>
+                    <ul>
+                        <li>Operating licence, PrDP register</li>
+                        <li>Daily vehicle inspection (A‑form)</li>
+                        <li>Consignment notes, trip logs, fuel logs</li>
+                        <li>Driver fatigue policy, goods‑in‑transit insurance</li>
+                    </ul>
+                    <div class="doc-count">📁 Full file directory: 08 folders</div>
+                    <a href="#" class="btn-small">View sample <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <p style="margin-bottom: 15px;">...and 15+ more industries (manufacturing, retail, hospitality, IT, farming, funeral, ECD, electrical, plumbing, warehousing, NGO, etc.)</p>
+            <a href="#contact" class="btn">Get your industry roadmap →</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION + REPOSITORY STRUCTURE -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Start your legacy</h2>
+        <div class="contact-form">
+            <input type="text" placeholder="Your name" id="contactName">
+            <input type="email" placeholder="Email address" id="contactEmail">
+            <input type="text" placeholder="Industry (e.g., Construction, ECD...)" id="contactIndustry">
+            <textarea rows="4" placeholder="Tell us what you need"></textarea>
+            <button class="btn" style="border:none; cursor:pointer;" onclick="alert('Thank you – we will respond within 24 hours. (Demo)')">Send enquiry →</button>
+        </div>
+    </div>
+</section>
+
+<!-- WEBSITE REPOSITORY STRUCTURE (for the client's own files) -->
+<section style="background: #eef2ff;">
+    <div class="container">
+        <h2 class="section-title">Our Website File Directory Structure</h2>
+        <p style="text-align: center; margin-bottom: 20px;">How we organise this website's files – a practical example of our document roadmap method.</p>
+        <div class="repo-structure">
+<pre>
+legacy-launchpad-website/
+│
+├── index.html                 # Main landing page (this file)
+├── assets/
+│   ├── css/
+│   │   └── style.css          # (optional – external CSS)
+│   ├── js/
+│   │   └── main.js            # (optional – interactive elements)
+│   ├── images/
+│   │   ├── logo-placeholder.png
+│   │   └── industry-thumbnails/
+│   ├── pdfs/
+│   │   ├── roadmap-construction-sample.pdf
+│   │   ├── roadmap-cleaning-sample.pdf
+│   │   ├── terms-of-business-draft.pdf
+│   │   └── privacy-policy.pdf
+│   └── downloads/
+│       ├── Industry_Roadmap_Checklist.xlsx
+│       └── File_Directory_Template.docx
+│
+├── industry-roadmaps/         # (sub‑pages for each industry – future)
+│   ├── construction.html
+│   ├── cleaning.html
+│   └── ...
+│
+└── README.md                  # Documentation for this repo
+</pre>
+        </div>
+        <p style="margin-top: 15px; text-align: center; font-size: 0.8rem;">⬆️ This is the exact folder structure we recommend for any business – scalable, auditable, and professional.</p>
+    </div>
+</section>
+
+<div class="footer">
+    <div class="container">
+        <p>© 2025 Legacy Launchpad (Pty) Ltd – Building what lasts.</p>
+        <p style="margin-top: 10px; font-size: 0.75rem;">Legacy Launchpad provides administrative and documentation support only. We are not lawyers, accountants, or tax practitioners.</p>
+        <p style="margin-top: 5px;">
+            <i class="fas fa-envelope"></i> mv.malusi@legacylaunchpad.co.za | 
+            <i class="fas fa-phone"></i> 076 876 6612
+        </p>
+    </div>
+</div>
+
+<a href="https://wa.me/27631425175" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
